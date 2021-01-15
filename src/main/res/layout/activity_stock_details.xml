@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_layout"
+    android:background="@color/white"
+    tools:context=".StockDetails">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/no_results"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="No Results Found"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:indeterminateDrawable="@drawable/progressbar_color"
+            />
+
+        <TextView
+            android:id="@+id/fetching_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/progressBar2"
+            android:layout_centerHorizontal="true"
+            android:text="Fetching Data" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleTextAppearance="@style/MyTheme.ActionBar.TitleTextStyle"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+
+            android:layout_below="@id/toolbar_details">
+
+            <RelativeLayout
+                android:id="@+id/rel1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+
+                <RelativeLayout
+                    android:id="@+id/inner_rel_layout"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    >
+
+                    <TextView
+                        android:id="@+id/detail_title"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:textColor="@color/black"
+                        android:textSize="26dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/current_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:textSize="26dp"
+                        android:gravity="right"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/change_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/current_price"
+                        android:layout_alignParentRight="true"
+                        android:textStyle="bold"
+                        android:textColor="#801232"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/name_ticker_detail"
+                        android:layout_width="300dp"
+                        android:layout_height="30dp"
+                        android:layout_below="@id/detail_title"
+                        android:textStyle="bold"
+                        android:textSize="16dp" />
+
+
+                </RelativeLayout>
+
+                <WebView
+                    android:id="@+id/highcharts_stock"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_below="@id/inner_rel_layout"
+                    android:background="@color/white"
+                    />
+
+                <RelativeLayout
+                    android:id="@+id/layout_portfolio_buy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/highcharts_stock">
+
+
+                    <TextView
+                        android:id="@+id/portfolio_trading"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="Portfolio"
+                        android:textStyle="bold"
+                        android:paddingLeft="15dp"
+                        android:gravity="left|center"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/info_portfolio_trading"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/portfolio_trading"
+                        android:layout_marginTop="2dp"
+                        android:paddingLeft="30dp"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:text="You have 0 shares. Start trading!" />
+
+                    <Button
+                        android:layout_width="125dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/trading_button"
+                        android:layout_below="@id/portfolio_trading"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="50dp"
+                        android:background="@drawable/round_btn_grey"
+                        android:text="TRADE"
+                        android:textColor="@color/white"/>
+
+
+                </RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/stats_text"
+                    android:text="Stats"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:gravity="left|center"
+                    android:paddingLeft="15dp"
+                    android:layout_below="@+id/layout_portfolio_buy"
+                    android:textStyle="bold"/>
+                <GridView
+                    android:id="@+id/simpleGridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/stats_text"
+                    android:gravity="center"
+                    android:verticalSpacing="5dp"
+                    android:horizontalSpacing="10dp"
+                    android:layout_marginRight="5dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/rel_for_About"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/simpleGridView">
+
+                    <TextView
+                        android:id="@+id/about"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="About"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:paddingLeft="15dp"
+                        android:gravity="left|center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/expandable_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/about"
+                        android:ellipsize="end"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:paddingTop="0dp"/>
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/news_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rel_for_About"
+                    android:text="News"
+                    android:paddingLeft="15dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/firstnews_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/news_heading"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginBottom="5dp"
+                    android:visibility="invisible"
+                    app:cardCornerRadius="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="250dp">
+
+                        <ImageView
+                            android:id="@+id/news_card_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+
+                            android:scaleType="fitXY" />
+
+
+                        <LinearLayout
+                            android:id="@+id/news_card_date_section"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/news_card_image">
+
+
+                            <TextView
+                                android:id="@+id/news_card_section"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Section"
+                                android:textSize="13dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:text=" "
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="17dp" />
+
+                            <TextView
+                                android:id="@+id/news_card_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:text="date"
+                                android:textSize="13dp" />
+
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/news_card_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/news_card_date_section"
+                            android:layout_marginTop="10dp"
+                            android:ellipsize="end"
+                            android:maxLines="3"
+                            android:text="Title"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/padding"
+                    android:layout_below="@id/firstnews_card"
+                    android:background="@color/sectionTabColor"
+                    android:layout_marginTop="5dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/news_recycler_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/padding" />
+
+
+                <!--                Here the webview and everything else will come.-->
+
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

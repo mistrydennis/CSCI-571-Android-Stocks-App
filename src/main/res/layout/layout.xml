@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <RelativeLayout
+        android:layout_width="380dp"
+        android:layout_height="325dp"
+        android:layout_centerInParent="true">
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:text="Trade Microsoft Corporation shares"
+            android:textSize="18dp" />
+
+        <RelativeLayout
+            android:id="@+id/rel_for_qty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dialog_title">
+
+            <EditText
+                android:id="@+id/transaction_editText"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:inputType="text"
+                android:text="124566" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_toRightOf="@+id/transaction_editText"
+                android:paddingTop="20dp"
+
+                android:text="shares" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/per_share_calculator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/rel_for_qty"
+
+            android:text="0 X $202.68 /share=" />
+
+        <TextView
+            android:id="@+id/per_stock_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_for_qty"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/per_share_calculator"
+            android:text="124.3145" />
+
+        <TextView
+            android:id="@+id/balance_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/per_share_calculator"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:text="$9313.6888 available to buy MSFT" />
+
+        <RelativeLayout
+            android:id="@+id/rel_layout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/balance_text"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/buy_button"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners"
+
+                android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp"
+                android:text="Buy"
+                android:textColor="@color/white"
+                android:topLeftRadius="10dp"
+
+                android:topRightRadius="10dp"></Button>
+
+            <Button
+                android:id="@+id/sell_button"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/rounded_corners"
+                android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp"
+                android:text="Sell"
+                android:textColor="@color/white"
+                android:topLeftRadius="10dp"
+                android:topRightRadius="10dp"></Button>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

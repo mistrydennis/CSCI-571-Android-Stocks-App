@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:forceDarkAllowed="false"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/main_activity_toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"/>-->
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:indeterminateDrawable="@drawable/progressbar_color"
+                android:layout_centerInParent="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fetching Data"
+                android:id="@+id/fetching_text"
+                android:layout_below="@+id/progressBar1"
+                android:layout_centerHorizontal="true"/>
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleTextAppearance="@style/MyTheme.ActionBar.TitleTextStyle"
+                android:id="@+id/toolbar_search"
+                />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_search"
+        android:visibility="invisible"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="November 8,2020"
+                android:id="@+id/current_date"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:gravity="left|center"
+                android:textColor="#7a787a"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="PORTFOLIO"
+                android:textStyle="bold"
+                android:id="@+id/portfolio"
+                android:textColor="@color/black"
+                android:background="#ccc"
+                android:gravity="left|center"
+                android:layout_below="@id/current_date"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Net worth"
+                android:id="@+id/net_worth"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:layout_below="@id/portfolio"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Net worth"
+                android:id="@+id/net_worth_val"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="2dp"
+                android:layout_below="@id/net_worth"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:id="@+id/padding"
+                android:layout_below="@id/net_worth_val"
+                android:background="@color/sectionTabColor"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/no_portfolio"
+                android:text="No stocks in portfolio section"
+                android:layout_below="@id/padding"
+                android:layout_above="@id/favourite"
+                android:visibility="visible"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sectioned_recycler_view"
+                android:layout_below="@id/padding"
+                android:text="@string/no_portfolio"/>
+
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="FAVOURITES"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:background="#ccc"
+            android:id="@+id/favourite"
+            android:gravity="left|center"
+            android:layout_below="@id/sectioned_recycler_view"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/favourite"
+                android:id="@+id/no_favourites"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:text="No stocks in favourites section"
+                android:visibility="gone"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sectioned_recycler_view2"
+                android:layout_below="@id/favourite" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@id/sectioned_recycler_view2"
+                android:text="Powered By Tiingo"
+                android:id="@+id/footer_text"
+                android:autoLink="web"
+                android:textStyle="italic"
+                android:gravity="center"
+                android:layout_alignParentBottom="false"
+                android:layout_centerHorizontal="true"/>
+
+
+
+        </RelativeLayout>
+
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

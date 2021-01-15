@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="145dp"
+            android:id="@+id/first"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="120dp"
+            android:id="@+id/second"
+            android:layout_toRightOf="@id/first"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="150dp"
+            android:id="@+id/third"
+            android:layout_toRightOf="@id/second"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="145dp"
+            android:id="@+id/fourth"
+            android:layout_below="@id/first"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="120dp"
+            android:layout_below="@id/first"
+            android:id="@+id/fifth"
+            android:layout_toRightOf="@id/fourth"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="150dp"
+            android:layout_below="@id/first"
+            android:id="@+id/sixth"
+            android:layout_toRightOf="@id/fifth"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="135dp"
+            android:layout_below="@id/fourth"
+            android:id="@+id/seventh"
+            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:textColor="@color/black"/>
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

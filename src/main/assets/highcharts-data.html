@@ -1,0 +1,129 @@
+<html>
+<head>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/volume-by-price.js"></script>
+</head>
+<body style="background-color:white;">
+<script language="JavaScript1.5" type="text/javascript">
+
+        var param1var = getQueryVariable("data");
+        function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+           var pair = vars[i].split("=");
+           if (pair[0] == variable) {
+             return pair[1];
+            }
+         }
+         alert('Query Variable ' + variable + ' not found');
+         }
+        ohlc = [];
+        volume = [] ;
+        function show_high_chart()
+            {
+                var param1var = getQueryVariable("data");
+
+                url2 = "http://androidnode-env.eba-4mpfywnf.us-east-1.elasticbeanstalk.com/company_historical/"+param1var;
+
+                fetch(url2)
+                .then(response => response.json())
+                .then(data => {
+                        // console.log('Success:', data.data);
+                        ohlc = data.data;
+                        volume = data.volume;
+
+                        update_data(this.ohlc,this.volume);
+
+                })
+                .catch((error) => {
+                console.error('Error:', error);
+                });
+
+            }
+        function update_data(ohlc,volume) {
+            Highcharts.stockChart('chart_container', {
+                series: [
+                    {
+                    type: 'candlestick',
+                    name: param1var,
+                    id: param1var,
+                    data: ohlc,
+                    zIndex:2,
+                    },
+                    {
+                    type: 'column',
+                    data: volume,
+                    name: 'Volume',
+                    id: 'volume',
+                    yAxis: 1,
+                    },
+                    {
+                    type: 'vbp',
+                    linkedTo: param1var,
+                    params: {
+                        volumeSeriesID: 'volume'
+                    },
+                    dataLabels: {
+                        enabled: false
+                    },
+                    zoneLines: {
+                        enabled: false
+                    },
+                    },
+                    {
+                    type: 'sma',
+                    linkedTo: param1var,
+                    zIndex: 1,
+                    marker: {
+                        enabled: false
+                    }
+                    }
+
+                ],
+                rangeSelector: {
+                    selected :1
+                },
+                tooltip: {
+                split: true
+                },
+
+                yAxis: [{
+                    labels: {
+                        align: 'right',
+                        x: -3
+                    },
+                    title: {
+                        text: 'OHLC'
+                    },
+                    height: '60%',
+                    lineWidth: 2,
+
+                }, {
+                    labels: {
+                        align: 'right',
+                        x: -3
+                    },
+                    title: {
+                        text: 'Volume'
+                    },
+                    top: '65%',
+                    height: '35%',
+                    offset: 0,
+                    lineWidth: 2
+                }],
+
+
+        });
+  }
+
+   show_high_chart();
+   </script>
+<div id="chart_container" style="height:100%; width:100%;"></div>
+</body>
+
+</html>
